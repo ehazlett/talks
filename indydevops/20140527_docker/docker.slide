@@ -1,0 +1,45 @@
+Welcome to Docker
+Indy DevOps
+27 May 2014
+
+Evan Hazlett
+
+@ehazlett
+github.com/ehazlett
+
+* Me
+
+- Co-Founder of Arcus
+- Builder of things
+- Docker contributor
+
+.image images/arcus_blue.png 400 400
+
+*  
+.image images/docker-logo.png
+
+* Docker?
+
+* Developers:
+
+- Hey, I need this deployed
+
+* Ops:
+
+- uh...
+
+* The Problem
+
+        +---------+------------+--------------+---------+------------+
+        |         | My Machine | Your Machine | Staging | Production |
+        +---------+------------+--------------+---------+------------+
+        | App     | ?          | ?            | ?       | ?          |
+        | Queue   | ?          | ?            | ?       | ?          |
+        | Workers | ?          | ?            | ?       | ?          |
+        | DB      | ?          | ?            | ?       | ?          |
+        +---------+------------+--------------+---------+------------+
+
+* Containers (shipping)
+
+- send anything, any size, anywhere
+.image images/shipping_containers.jpg
