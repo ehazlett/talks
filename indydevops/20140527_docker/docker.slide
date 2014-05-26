@@ -8,9 +8,8 @@ Evan Hazlett
 github.com/ehazlett
 
 * Me
-
 - Co-Founder of Arcus
-- Builder of things
+- Builder of things (github.com/ehazlett)
 - Docker contributor
 
 .image images/arcus_blue.png 400 400
@@ -18,14 +17,18 @@ github.com/ehazlett
 *  
 .image images/docker-logo.png
 
-* Docker?
+* Why?
 
 * Developers:
-
-- Hey, I need this deployed
+- Dev local
+- Custom setup
+- Local services
+- ...works for me!
 
 * Ops:
-
+- What OS?
+- Configuration?
+- Deployment?
 - uh...
 
 * The Problem
@@ -40,6 +43,142 @@ github.com/ehazlett
         +---------+------------+--------------+---------+------------+
 
 * Containers (shipping)
-
 - send anything, any size, anywhere
+- can be loaded, unloaded, by various methods of transport
 .image images/shipping_containers.jpg
+
+* Containers (Docker)
+- Lightweight virtualization
+- No performance hit like traditional VMs
+- Developers create images
+- Ops deploy and run containers
+- Runs everywhere
+.image images/docker_container.png
+
+* For Developers
+- Build once, run anywhere
+- Applications are run isolated with independent versions of libraries, etc.
+- Resource friendly to run multiple containers concurrently; very little overhead
+
+* For DevOps
+- Consistency between environments
+- Separation of concerns
+- Greater speed and reliability of deployments
+- Easier automation for continuous integration services
+
+* Separation of Concerns
+
+* Developers
+- Configures what is "inside" the container
+- Code
+- Libraries
+- OS Packages
+- Various Apps and Data
+
+* DevOps
+- Configures what is "outside" the container
+- Logging / Monitoring
+- Remote Access
+- Containers run separate of the host OS
+- Container operations are the same (start, stop, restart, attach, etc.)
+
+* Technical
+Each container runs isolated:
+
+- Isolated Process Space
+- Network interface
+- Root access
+- Can have a separate `/sbin/init`
+- chroot on steroids
+- Shares kernel with host
+- No device emulation from host (no HVM or PV)
+
+* Docker Ecosystem
+- Almost any Linux distro with a 2.6.32+ kernel
+- AWS ElasticBeanstalk
+- Google Compute Engine
+- ...more and more (PaaS, automation, management, dev tools, etc.)
+
+.image images/docker-ecosystem.png
+
+* Docker in Action
+
+* Hello World
+
+.play scripts/hello_world_1.sh /#START OMIT/,/#END OMIT/
+
+* Filesystem
+
+.play scripts/hello_world_2.sh /#START OMIT/,/#END OMIT/
+
+* Images
+- Bundle of layers containing a base OS and data
+- Independent of the host OS
+
+Debian Jessie
+
+.play scripts/pull_debian.sh /#START OMIT/,/#END OMIT/
+
+Fedora 20
+
+.play scripts/pull_fedora.sh /#START OMIT/,/#END OMIT/
+
+Ubuntu 14.04
+
+.play scripts/pull_ubuntu.sh /#START OMIT/,/#END OMIT/
+
+* Containers
+- An instance of an image
+- Uses a separate filesystem
+
+* Containers (cont.)
+.play scripts/run_debian_apt.sh /#START OMIT/,/#END OMIT/
+
+* Containers (cont.)
+.play scripts/run_fedora_yum.sh /#START OMIT/,/#END OMIT/
+
+* More Examples
+- Graphite (`arcus/graphite`)
+- ElasticSearch (`arcus/elasticsearch`)
+- etcd (`coreos/etcd`)
+- RethinkDB (`crosbymichael/rethinkdb`)
+- Jenkins (`arcus/jenkins`)
+- Public Index (http://index.docker.io) - repository of public images
+
+* Build Your Own
+
+* Dockerfile
+- Describes an Image
+- Simple syntax for automation
+
+* Dockerfile
+
+.code _docker/demo00/Dockerfile
+
+* Build
+- Creates the image
+
+.play scripts/build_demo00.sh /#START OMIT/,/#END OMIT/
+
+* Build Caching
+- Uses layer caching for speed
+- Only builds layers that have changes
+
+.play scripts/build_demo00_cache.sh /#START OMIT/,/#END OMIT/
+
+* Push (optional)
+- Pushes the image to a remote registry
+- Others can pull from the registry and run directly
+
+    docker push ehazlett/foo
+
+* Scale
+
+* Start 100 Containers
+.play scripts/scale-test-launch.sh /#START OMIT/,/#END OMIT/
+
+* 
+.play scripts/scale-test-view.sh /#START OMIT/,/#END OMIT/
+
+* Stop Containers
+.play scripts/scale-test-teardown.sh /#START OMIT/,/#END OMIT/
