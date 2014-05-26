@@ -129,7 +129,7 @@ Ubuntu 14.04
 
 * Containers
 - An instance of an image
-- Uses a separate filesystem
+- Separate filesystem, networking, etc.
 
 * Containers (cont.)
 .play scripts/run_debian_apt.sh /#START OMIT/,/#END OMIT/
