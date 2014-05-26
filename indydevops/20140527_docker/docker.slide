@@ -8,7 +8,6 @@ Evan Hazlett
 github.com/ehazlett
 
 * Me
-
 - Co-Founder of Arcus
 - Builder of things
 - Docker contributor
@@ -18,14 +17,18 @@ github.com/ehazlett
 *  
 .image images/docker-logo.png
 
-* Docker?
+* Why?
 
 * Developers:
-
-- Hey, I need this deployed
+- Dev local
+- Custom setup
+- Local services
+- ...works for me!
 
 * Ops:
-
+- What OS?
+- Configuration?
+- Deployment?
 - uh...
 
 * The Problem
@@ -40,6 +43,124 @@ github.com/ehazlett
         +---------+------------+--------------+---------+------------+
 
 * Containers (shipping)
-
 - send anything, any size, anywhere
+- can be loaded, unloaded, by various methods of transport
 .image images/shipping_containers.jpg
+
+* Containers (Docker)
+- Lightweight virtualization
+- No performance hit like traditional VMs
+- Developers create images
+- Ops deploy and run containers
+- Runs everywhere
+.image images/docker_container.png
+
+* For Developers
+- Build once, run anywhere
+- Applications are run isolated with independent versions of libraries, etc.
+- Resource friendly to run multiple containers concurrently; very little overhead
+
+* For DevOps
+- Consistency between environments
+- Separation of concerns
+- Greater speed and reliability of deployments
+- Easier automation for continuous integration services
+
+* Separation of Concerns
+
+* Developers
+- Configures what is "inside" the container
+- Code
+- Libraries
+- OS Packages
+- Various Apps and Data
+
+* DevOps
+- Configures what is "outside" the container
+- Logging / Monitoring
+- Remote Access
+- Containers run separate of the host OS
+- Container operations are the same (start, stop, restart, attach, etc.)
+
+* Technical
+Each container runs isolated:
+
+- Isolated Process Space
+- Network interface
+- Root access
+- Can have a separate `/sbin/init`
+- chroot on steroids
+- Shares kernel with host
+- No device emulation from host (no HVM or PV)
+
+* Docker Ecosystem
+- Almost any Linux distro with a 2.6.32+ kernel
+- AWS ElasticBeanstalk
+- Google Compute Engine
+- ...more and more (PaaS, automation, management, dev tools, etc.)
+
+.image images/docker-ecosystem.png
+
+* Docker in Action
+
+* Getting Started
+
+  $> docker run busybox echo "hello world"
+  hello world
+
+* Images
+- Bundle of layers containing a base OS and data
+- Images can inherit from others
+- Public Index (http://index.docker.io) - repository of public images
+- Independent of the host OS
+
+Debian Jessie
+
+  $> docker pull stackbrew/debian:jessie
+
+Fedora 20
+
+  $> docker pull stackbrew/fedora:20
+
+Ubuntu 14.04
+
+  $> docker pull stackbrew/ubuntu:14.04
+
+* Containers
+- An instance of an image
+- Uses a separate filesystem
+
+  $> docker run -it stackbrew/debian:jessie bash
+
+* More Examples
+- Graphite
+- ElasticSearch
+- RethinkDB
+
+* Build Your Own
+
+* Dockerfile
+- Describes an Image
+- Simple syntax for automation
+
+* Dockerfile
+
+    from stackbrew/debian:jessie
+    maintainer evan hazlett <ejhazlett@gmail.com>
+    run apt-get update
+    run apt-get install -y nginx
+    add nginx.conf /etc/nginx/nginx.conf
+    expose 80
+    cmd ["/usr/sbin/nginx", "-c", "/etc/nginx/nginx.conf"]
+
+* Build
+- Creates the image
+- Uses layer caching for speed
+
+    docker build -t talks/demo00 .
+
+* Push (optional)
+- Pushes the image to a remote registry
+- Others can pull from the registry and run directly
+
+    docker push ehazlett/foo
