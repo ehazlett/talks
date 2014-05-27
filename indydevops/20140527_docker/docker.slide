@@ -20,16 +20,17 @@ github.com/ehazlett
 * Why?
 
 * Developers:
-- Dev local
-- Custom setup
+- Dev local, custom setup, various tools
 - Local services
 - ...works for me!
+.image images/dance.gif
 
 * Ops:
 - What OS?
 - Configuration?
 - Deployment?
 - uh...
+.image images/no-huh-uh.gif
 
 * The Problem
 
@@ -160,6 +161,10 @@ Ubuntu 14.04
 
 .play scripts/build_demo00.sh /#START OMIT/,/#END OMIT/
 
+* Run
+
+.play scripts/run_demo00.sh /#START OMIT/,/#END OMIT/
+
 * Build Caching
 - Uses layer caching for speed
 - Only builds layers that have changes
@@ -177,8 +182,31 @@ Ubuntu 14.04
 * Start 100 Containers
 .play scripts/scale-test-launch.sh /#START OMIT/,/#END OMIT/
 
-* 
+* View
 .play scripts/scale-test-view.sh /#START OMIT/,/#END OMIT/
 
 * Stop Containers
 .play scripts/scale-test-teardown.sh /#START OMIT/,/#END OMIT/
+
+* More Info
+- Apache Mesos (Docker automation and clustering)
+- Deis (Docker based PaaS)
+- Flynn (PaaS like automation)
+- Dokku (mini Heroku PaaS)
+- Drone.io (Docker based CI environment)
+- CoreOS (next gen operating system with Docker at its core)
+- Docker Public Index (Public and Private Registry)
+
+www: docker.io
+github: dotcloud/docker
+irc: freenode #docker
+twitter: @docker
+
+*  
+.image images/docker-logo.png
+
+@ehazlett
+github.com/ehazlett
+
+* 
+

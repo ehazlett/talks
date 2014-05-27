@@ -1,4 +1,4 @@
 #!/bin/bash
 #START OMIT
-docker run busybox ls -lah /
+docker run stackbrew/busybox ls -lah /
 #END OMIT
