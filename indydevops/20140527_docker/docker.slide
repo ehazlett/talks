@@ -154,25 +154,25 @@ Ubuntu 14.04
 
 * Dockerfile
 
-.code _docker/demo00/Dockerfile
+.code _docker/demo/Dockerfile
 
 * Build
 - Creates the image
 
-.play scripts/build_demo00.sh /#START OMIT/,/#END OMIT/
+.play scripts/build_demo.sh /#START OMIT/,/#END OMIT/
 
 * Run
 
-.play scripts/run_demo00.sh /#START OMIT/,/#END OMIT/
+.play scripts/run_demo.sh /#START OMIT/,/#END OMIT/
 
 * Build Caching
 - Uses layer caching for speed
 - Only builds layers that have changes
 
-.play scripts/build_demo00_cache.sh /#START OMIT/,/#END OMIT/
+.play scripts/build_demo_cache.sh /#START OMIT/,/#END OMIT/
 
 * Push (optional)
-- Pushes the image to a remote registry
+- Pushes the image to a remote registry (i.e. Docker Public Index)
 - Others can pull from the registry and run directly
 
     docker push ehazlett/foo

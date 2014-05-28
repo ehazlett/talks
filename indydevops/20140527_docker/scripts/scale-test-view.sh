@@ -1,4 +1,4 @@
 #!/bin/bash
 #START OMIT
-docker ps | grep demo00
+docker ps | grep demo
 #END OMIT
