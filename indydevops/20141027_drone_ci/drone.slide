@@ -1,0 +1,61 @@
+Drone CI
+
+Indy DevOps
+27 October 2014
+
+Evan Hazlett
+@ehazlett
+github.com/ehazlett
+
+* What is it?
+- open source continuous integration service
+- built using Go
+
+* Why
+- written in Go
+- runs all tests in Docker containers
+- support for external services (Docker images)
+
+* Features
+- builtin support for many languages (Go, C/C++, Python, Java, Scala, etc)
+- all test configuration is in a config file in repo (no need for external job setup) 
+- all tests are isolated from host (runs in Docker container)
+- external services can be anything (Docker images)
+- services are automatically proxied to container localhost via `socat`
+- private variables per repo
+
+* Example (Go)
+- edit code
+- push to repo
+
+.link https://github.com/ehazlett/go-demo Simple Go App
+
+* Drone (Go)
+
+.link http://ci.evanhazlett.com/github.com/ehazlett/go-demo Test Results
+
+* Example (Python)
+- edit code
+- push to repo
+
+.link https://github.com/ehazlett/drone-py-demo Simple Python App
+
+* Drone (Python)
+
+.link http://ci.evanhazlett.com/github.com/ehazlett/drone-py-demo Test Results
+
+* Example (Services)
+- edit code
+- push to repo
+
+.link https://github.com/shipyard/shipyard Go app with Services 
+.link https://github.com/shipyard/docker-rethinkdb RethinkDB
+
+* Drone (Services)
+- Drone will automatically proxy services for test container (on localhost)
+
+.link http://ci.evanhazlett.com/github.com/shipyard/shipyard Test Results
+
+* Misc
+- use any Docker image for services
+- Drone Wall (https://github.com/drone/drone-wall) for displays
